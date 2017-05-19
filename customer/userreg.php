@@ -101,7 +101,7 @@
                             </div>  
 
                              <div class="form-group">
-                              <label for="exampleInputEmail1">Phone Number</label>                          
+                              <label for="exampleInputEmail1">Residence</label>                          
                             <select class="form-control">
                                   <option>Bomet</option>
                                   <option>Bungoma</option>
