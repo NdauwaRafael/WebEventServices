@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+include "inc/database.php";
+session_start();
+ob_start();
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eservices</title>
 
-    <link href="tools/css/bootstrap.min.css" rel="stylesheet">
-    <link href="tools/css/custom.min.css" rel="stylesheet">
+<?php include "inc/css.php" ?>
 
   </head>
 
@@ -81,15 +84,15 @@
                     <div class="col-md-6">
                       <h4>Login to access services</h4>
                       <hr>                    
-                          <form>
+                          <form action="index.php" method="post">
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                              <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                             </div>                         
 
                             <div class="form-group">
                               <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
 
                             <div class="checkbox">
@@ -105,7 +108,25 @@
                               <a href="customer/userreg.php"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" ></span> Create account</button></a> 
                             </div>                           
 
-                                              
+ <?php
+   if($_POST){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $select = "SELECT * FROM `customer` WHERE `email`='$email' AND `password`='$password' ";
+
+        $result = mysqli_query($connect, $select);
+                
+                if(mysqli_num_rows($result)==1){
+                   $_SESSION['customer_email'] = $email;
+                   header("location: home.php");		  
+                }else{
+                  echo '<div class="alert alert-danger" role="alert">Invalid Email and Password Combination, try again!!</div>';
+                }	        
+
+   }
+
+ ?>                                             
                     </div>
             </div>
 
@@ -125,10 +146,7 @@
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="tools/js/bootstrap.min.js"></script>
+<?php include "inc/js.php"; ?>
   </body>
 
 </html>

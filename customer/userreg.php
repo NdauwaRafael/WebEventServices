@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+include "../inc/database.php";
+session_start();
+ob_start();
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -75,7 +79,7 @@
                     <div class="col-md-6">
                       <h4>User registration form</h4>
                       <hr>
-                          <form>
+                          <form action="userreg.php" method="post">
 
                             <div class="form-group">
                               <label >First Name</label>
@@ -97,7 +101,7 @@
 
                             <div class="form-group">
                               <label for="exampleInputEmail1">Phone Number</label>
-                              <input type="text" class="form-control" name="phone" id="" placeholder="Phone Number">
+                              <input type="number" class="form-control" name="phone" id="" placeholder="Phone Number">
                             </div>  
 
                              <div class="form-group">
@@ -146,7 +150,7 @@
                            
                              <div class="form-group">
                               <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                              <input type="password" class="form-control" name="pass" id="exampleInputPassword1" placeholder="Password">
                             </div>                        
 
                             <div class="form-group">
@@ -160,7 +164,7 @@
 
                                          
 <?php
-include "../inc/database.php";
+
    if($_POST){
      $fname = $_POST['firstname'];
      $lname = $_POST['lastname'];
@@ -178,8 +182,8 @@ include "../inc/database.php";
         
         $query = "INSERT INTO `customer`(`id`, `firstname`, `lastname`, `email`, `phone`, `residence`, `password`) VALUES (NULL,'$fname','$lname','$email','$phone','$residence','$pass')";
         if(mysqli_query($connect, $query)){
-          echo "User added";
           $_SESSION['customer_email'] = $email;
+          header("location: dashboard.php");
         }else{
           echo "error";
         }
