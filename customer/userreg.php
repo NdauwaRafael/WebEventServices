@@ -83,26 +83,26 @@
                             </div> 
                             <div class="form-group">
                               <label >Last Name</label>
-                              <input type="text" class="form-control" id="" placeholder="Last Name">
+                              <input type="text" class="form-control" name="lastname" id="" placeholder="Last Name">
                             </div>                                                       
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                              <input type="email" class="form-control" name="email" id="" placeholder="Email">
                             </div>  
 
                             <div class="form-group">
                               <label for="exampleInputEmail1">ID Number</label>
-                              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="ID Number">
+                              <input type="text" class="form-control" name="idno" id="" placeholder="ID Number">
                             </div>  
 
                             <div class="form-group">
                               <label for="exampleInputEmail1">Phone Number</label>
-                              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
+                              <input type="text" class="form-control" name="phone" id="" placeholder="Phone Number">
                             </div>  
 
                              <div class="form-group">
                               <label for="exampleInputEmail1">Residence</label>                          
-                            <select class="form-control">
+                            <select class="form-control" name="resident">
                                   <option>Bomet</option>
                                   <option>Bungoma</option>
                                   <option>Busia</option>
@@ -146,12 +146,12 @@
                            
                              <div class="form-group">
                               <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                             </div>                        
 
                             <div class="form-group">
                               <label for="exampleInputPassword1">Confirm Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                              <input type="password" class="form-control" name="cpass" id="exampleInputPassword1" placeholder="Confirm Password">
                             </div>
 
                             
@@ -159,7 +159,35 @@
                           </form> 
 
                                          
+<?php
+include "../inc/database.php";
+   if($_POST){
+     $fname = $_POST['firstname'];
+     $lname = $_POST['lastname'];
+     $email = $_POST['email'];
+     $phone = $_POST['phone'];
+     $idno = $_POST['idno'];
+     $residence = $_POST['resident'];
+     $pass = $_POST['pass'];
+     $cpass = $_POST['cpass'];
 
+
+     if($pass!=$cpass){
+         echo"password mismatch";
+     }else{
+        
+        $query = "INSERT INTO `customer`(`id`, `firstname`, `lastname`, `email`, `phone`, `residence`, `password`) VALUES (NULL,'$fname','$lname','$email','$phone','$residence','$pass')";
+        if(mysqli_query($connect, $query)){
+          echo "User added";
+          $_SESSION['customer_email'] = $email;
+        }else{
+          echo "error";
+        }
+
+
+     }
+   }
+?>
                                               
                     </div>
             </div>
