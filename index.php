@@ -7,6 +7,7 @@
     <title>Eservices</title>
 
     <link href="tools/css/bootstrap.min.css" rel="stylesheet">
+    <link href="tools/css/custom.min.css" rel="stylesheet">
 
   </head>
 
@@ -71,7 +72,7 @@
 
           <div class="container">
             
-            <div class="row">
+            <div class="row home-start">
                     <div class="col-md-6">
                       <h4>Halloooooooooooooooooooooooo</h4>
                       <hr>
@@ -101,7 +102,7 @@
 
                              <div class="form-group">
                               <label >Dont have an account yet??</label>
-                              <a href="userreg.php"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" ></span> Create account</button></a> 
+                              <a href="customer/userreg.php"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" ></span> Create account</button></a> 
                             </div>                           
 
                                               

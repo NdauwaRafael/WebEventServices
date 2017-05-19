@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eservices</title>
 
-    <link href="tools/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../tools/css/bootstrap.min.css" rel="stylesheet">
 
   </head>
 
@@ -76,6 +76,15 @@
                       <h4>User registration form</h4>
                       <hr>
                           <form>
+
+                            <div class="form-group">
+                              <label >First Name</label>
+                              <input type="text" class="form-control" name="firstname" id="" placeholder="First Name">
+                            </div> 
+                            <div class="form-group">
+                              <label >Last Name</label>
+                              <input type="text" class="form-control" id="" placeholder="Last Name">
+                            </div>                                                       
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
                               <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
@@ -91,59 +100,42 @@
                               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
                             </div>  
 
-                           
+                             <div class="form-group">
+                              <label for="exampleInputEmail1">Phone Number</label>                          
                             <select class="form-control">
-  <option>Bomet</option>
-  <option>Bungoma</option>
-  <option>Busia</option>
-  <option>Elgeyo_Marakwet</option>
-  <option>Garissa</option>
-  <option>Homa_Bay</option>
-  <option>Isiolo</option>
-  <option>Kajiado</option>
-  <option>Kakamega</option>
-  <option>Kericho</option>
-  <option>Kiambu</option>
-  <option>Kilifi</option>
-  <option>Kirinyaga</option>
-  <option>Kisii</option>
-  <option>Kisumu</option>
-  <option>Kisumu</option>
-  <option>Kisumu</option>
-  <option>Laikipia</option>
-  <option>Machakos</option>
-  <option>Makueni</option>
-  <option>Mandera</option>
-  <option>Marsabit</option>
-  <option>Meru</option>
-  <option>Migori</option>
-  <option>Mombasa</option>
-  <option>Murang'a</option>
-  <option>Nairobi</option>
-  <option>Nakuru</option>
-  <option>Nandi</option>
-  <option>Narok</option>
+                                  <option>Bomet</option>
+                                  <option>Bungoma</option>
+                                  <option>Busia</option>
+                                  <option>Elgeyo_Marakwet</option>
+                                  <option>Garissa</option>
+                                  <option>Homa_Bay</option>
+                                  <option>Isiolo</option>
+                                  <option>Kajiado</option>
+                                  <option>Kakamega</option>
+                                  <option>Kericho</option>
+                                  <option>Kiambu</option>
+                                  <option>Kilifi</option>
+                                  <option>Kirinyaga</option>
+                                  <option>Kisii</option>
+                                  <option>Kisumu</option>
+                                  <option>Kisumu</option>
+                                  <option>Kisumu</option>
+                                  <option>Laikipia</option>
+                                  <option>Machakos</option>
+                                  <option>Makueni</option>
+                                  <option>Mandera</option>
+                                  <option>Marsabit</option>
+                                  <option>Meru</option>
+                                  <option>Migori</option>
+                                  <option>Mombasa</option>
+                                  <option>Murang'a</option>
+                                  <option>Nairobi</option>
+                                  <option>Nakuru</option>
+                                  <option>Nandi</option>
+                                  <option>Narok</option>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-</select> 
-
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>     
-    
-   
-   
+                                    </select> 
+</div>
    
 
                     </div>
