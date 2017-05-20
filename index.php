@@ -1,8 +1,4 @@
-<?php
-include "inc/database.php";
-session_start();
-ob_start();
-?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,7 +10,7 @@ ob_start();
 
   </head>
 
-  <body>
+  <body style = "background:url('tools/images/wit.jpg'); background-size:cover;">
 
               <nav class="navbar navbar-default">
               <div class="container">
@@ -27,7 +23,7 @@ ob_start();
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="#">Eservices</a>
                   </div>
 
                   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,14 +81,24 @@ ob_start();
                       <h4>Login to access services</h4>
                       <hr>                    
                           <form action="index.php" method="post">
+
                             <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                              <label >Login as??</label>
+                                  <select class="form-control" id="user">
+                                  <option>--------------[SELECT A CATEGORY TO LOGIN]--------------</option>
+                                    <option  value="customer">Customer</option>
+                                    <option value="vendor">Vendor</option>
+                                  </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label >Email address</label>
+                              <input type="email" id="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                             </div>                         
 
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              <label >Password</label>
+                              <input type="password" id="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
 
                             <div class="checkbox">
@@ -100,33 +106,15 @@ ob_start();
                                 <input type="checkbox"> Remember Me
                               </label>
                             </div>
-                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                            <button type="button" id="login_home_btn" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login</button>
                           </form> 
-
+                          <div id="status"></div>
                              <div class="form-group">
                               <label >Dont have an account yet??</label>
                               <a href="customer/userreg.php"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" ></span> Create account</button></a> 
                             </div>                           
 
- <?php
-   if($_POST){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $select = "SELECT * FROM `customer` WHERE `email`='$email' AND `password`='$password' ";
-
-        $result = mysqli_query($connect, $select);
-                
-                if(mysqli_num_rows($result)==1){
-                   $_SESSION['customer_email'] = $email;
-                   header("location: home.php");		  
-                }else{
-                  echo '<div class="alert alert-danger" role="alert">Invalid Email and Password Combination, try again!!</div>';
-                }	        
-
-   }
-
- ?>                                             
+                                          
                     </div>
             </div>
 
@@ -147,6 +135,30 @@ ob_start();
 
 
 <?php include "inc/js.php"; ?>
+<script>
+  $(document).ready(function(){
+$("#login_home_btn").click(function(){
+     var user1 = $("#user").val();
+     var email1 = $("#email").val();
+     var password1 = $("#password").val();
+
+     $.post("config/login.conf.php",
+     {
+                 user:user1,
+                 email:email1,
+                 password:password1
+            },
+            function(data){
+              $("#status").html(data);
+            }
+            )
+
+});
+
+     
+  });
+
+</script> 
   </body>
 
 </html>

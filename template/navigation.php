@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+
  $page = basename($_SERVER['PHP_SELF']);
 
 $user = $_SESSION["customer_email"];
@@ -60,7 +60,7 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
                           <li><a href="#">Another action</a></li>
                           <li><a href="#">Something else here</a></li>
                           <li role="separator" class="divider"></li>
-                          <li><a id="logout" href="../inc/logout.php">logout</a></li>
+                          <li><a id="logout" href=" <?php if($page == 'home.php'){ echo "config/logout.php"; }else{echo "../config/logout.php";}  ?>">logout</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -75,7 +75,7 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
  $(documment).ready(function(){
             var url = '<?php echo $dir; ?>';
             if (url =='localhost/WebEventServices/')
-            $("#logout").attr('href', 'inc/logout.php');
+            $("#logout").attr('href', 'config/logout.php');
             }     
  })
 </script>
