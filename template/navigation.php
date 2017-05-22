@@ -13,7 +13,7 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
 
 
 ?>             
-              <nav class="navbar navbar-custom ">
+              <nav class="navbar navbar-custom navbar-fixed-top">
               <div class="container">
                 <div class="container-fluid">
                   <!-- Brand and toggle get grouped for better mobile display -->

@@ -4,7 +4,7 @@ require "config/session.php";
    header("location: index.php");
  }
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -16,49 +16,17 @@ require "config/session.php";
 
   </head>
 
-  <body>
+  <body style = "background:url('tools/images/tent-rental-slider.jpg'); background-size:cover; background-attachment: fixed; padding-top:70px;">
 <?php include "template/navigation.php"; ?>
 
 
-          <div class="container">
+          <div class="container home-content">
             
             <div class="row">
 
 
+  <?php include "customer/view_services.php"; ?>
 
-                      <div class="row">
-                           <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                             <img src="tools/images/tr.jpg" alt="...">
-                               <div class="caption">
-                                <h3>Transport</h3>
-                                 <p>text herre</p>
-                                 <p><a href="#" class="btn btn-primary" role="button">Button</a> 
-                             </div>
-                           </div>
-                         </div>
-
-                           <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                             <img src="tools/images/dj.jpg" alt="...">
-                               <div class="caption">
-                                <h3>Entertainment</h3>
-                                 <p>...</p>
-                                 <p><a href="#" class="btn btn-primary" role="button">Button</a> 
-                             </div>
-                           </div>
-                         </div>
-
-                           <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                             <img src="tools/images/wit.jpg" alt="...">
-                               <div class="caption">
-                                <h3>Cattering</h3>
-                                 <p>...</p>
-                                 <p><a href="#" class="btn btn-primary" role="button">Button</a> 
-                             </div>
-                           </div>
-                         </div>
                           </div>                                        
             </div>
 

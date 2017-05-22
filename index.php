@@ -10,9 +10,9 @@
 
   </head>
 
-  <body style = "background:url('tools/images/wit.jpg'); background-size:cover;">
+  <body style = "background:url('tools/images/tent.jpg'); background-size:cover;">
 
-              <nav class="navbar navbar-default">
+              <nav class="navbar navbar-custom">
               <div class="container">
                 <div class="container-fluid">
                   <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,19 +73,88 @@
             
             <div class="row home-start">
                     <div class="col-md-6">
-                      <h4>Halloooooooooooooooooooooooo</h4>
+                      <h4>Event Site Services</h4>
                       <hr>
+
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                  <!-- Indicators -->
+                                  <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                                  </ol>
+
+                                  <!-- Wrapper for slides -->
+                                  <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                      <img src="tools/images/jazz.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                       <h4>Jazz Group</h4>
+                                       <hr>
+                                       Fusce rutrum lectus id nibh ullamcorper aliquet. Pellentesque pretium mauris et augue fringilla non bibendum turpis iaculis. Donec sit amet nunc lorem.                                       
+                                      </div>
+                                    </div>
+                                    <div class="item">
+                                      <img src="tools/images/dj.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                        ...
+                                      </div>
+                                    </div>
+
+                                    <div class="item">
+                                      <img src="tools/images/wit.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                        ...
+                                      </div>
+                                    </div>                                    
+
+                                    <div class="item">
+                                      <img src="tools/images/4.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                        ...
+                                      </div>
+                                    </div> 
+
+                                    <div class="item">
+                                      <img src="tools/images/wedding-space.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                        ...
+                                      </div>
+                                    </div> 
+
+                                    <div class="item">
+                                      <img src="tools/images/weddi.jpg" alt="...">
+                                      <div class="carousel-caption">
+                                        Quitar group
+                                      </div>
+                                    </div> 
+                                  </div>
+
+                                  <!-- Controls -->
+                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                                </div>                      
                     </div>
 
                     <div class="col-md-6">
                       <h4>Login to access services</h4>
-                      <hr>                    
+                      <hr>
+                      <div id="status"></div>                    
                           <form action="index.php" method="post">
 
                             <div class="form-group">
                               <label >Login as??</label>
                                   <select class="form-control" id="user">
-                                  <option>--------------[SELECT A CATEGORY TO LOGIN]--------------</option>
+                                  <option value="">--------------[SELECT A CATEGORY TO LOGIN]--------------</option>
                                     <option  value="customer">Customer</option>
                                     <option value="vendor">Vendor</option>
                                   </select>
@@ -108,7 +177,7 @@
                             </div>
                             <button type="button" id="login_home_btn" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login</button>
                           </form> 
-                          <div id="status"></div>
+                          
                              <div class="form-group">
                               <label >Dont have an account yet??</label>
                               <a href="customer/userreg.php"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" ></span> Create account</button></a> 
@@ -134,26 +203,32 @@
 
 
 
-<?php include "inc/js.php"; ?>
+<?php include("inc/js.php"); ?>
 <script>
   $(document).ready(function(){
-$("#login_home_btn").click(function(){
-     var user1 = $("#user").val();
-     var email1 = $("#email").val();
-     var password1 = $("#password").val();
+        $("#login_home_btn").click(function(){
+            var user1 = $("#user").val();
+            var email1 = $("#email").val();
+            var password1 = $("#password").val();
 
-     $.post("config/login.conf.php",
-     {
-                 user:user1,
-                 email:email1,
-                 password:password1
-            },
-            function(data){
-              $("#status").html(data);
-            }
-            )
+              if(user1==''|| email1==''|| password1==''){
+                  $("#status").html('<div class="alert  btn-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Fill all fields before submitting the form else loging error will occur.! <span class="glyphicon glyphicon-alert"></span></div>');
+              }else{
 
-});
+                  $.post("config/login.conf.php",
+                  {
+                              user:user1,
+                              email:email1,
+                              password:password1
+                          },
+                          function(data){
+                            $("#status").html(data);
+                          }
+                          );
+
+              }
+
+        });
 
      
   });

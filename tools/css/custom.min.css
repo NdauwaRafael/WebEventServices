@@ -1,6 +1,6 @@
 .home-start {
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     
 }
 
@@ -14,4 +14,24 @@
 
 .navbar-custom {
     background: #33691e !important;
+}
+
+.navbar-custom a {
+   color: #fce4ec !important;
+}
+.navbar-custom a:hover {
+   color: #f44336 !important;
+}
+.navbar-custom a:focus {
+   color: #f44336 !important;
+}
+
+.navbar-custom .dropdown-menu {
+   background: #33691e !important;
+}
+.home-content {
+    margin-top: 0px;
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.5);
+    
 }
