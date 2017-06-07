@@ -29,7 +29,7 @@
                 <ul class="list-group">
                 <li class="list-group-item">City: <?= $service_city; ?></li>
                 <li class="list-group-item">County: <?= $service_county; ?></li>
-                <li class="list-group-item"><strong>Price (per hour):</strong> <?= $service_price; ?></li>
+                <li class="list-group-item"><strong>Price (per hour):</strong> <?="Ksh ". $service_price; ?></li>
                 </ul>        
         <p><a href="#" class="btn btn-success btn-lg btn-block" role="button" data-toggle="modal" data-target=".select<?= $service_id; ?>">Select this Item</a></p>
       </div>
@@ -39,7 +39,7 @@
 
 
 <div class="modal fade select<?= $service_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
             <div class="modal-header" data-background-color="green" >
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -84,8 +84,8 @@
  	                                   
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													<label>Item Quantity (optional)</label>
-													<input  type="text" class="form-control" id="quantity<?= $service_id; ?>">
+													<label>Price (Ksh.)</label>
+													<input style="color:red; "  type="text" value="<?="Ksh ".$service_price; ?>" class="form-control" id="price<?= $service_id; ?>" readonly>
 												</div>
 	                                        </div>
                                          </div> 
@@ -124,12 +124,24 @@
 </div>
 <script>
 
+$("#duration<?= $service_id; ?>").keyup(function(){
+    var qtty = $("#duration<?= $service_id; ?>").val();
+    var price = "<?=$service_price; ?>";
+    var amt =qtty * price;
+
+
+    $("#price<?= $service_id; ?>").val(amt);
+
+})
+
     $("#request_service_customer_btn<?= $service_id; ?>").click(function(){
         var Location1 = $("#location<?= $service_id; ?>").val();
         var Date1 = $("#date<?= $service_id; ?>").val();
         var Duration = $("#duration<?= $service_id; ?>").val();
         var Quantity = $("#quantity<?= $service_id; ?>").val();
         var Description = $("#description<?= $service_id; ?>").val();
+        var service_price1 = $("#price<?= $service_id; ?>").val();
+        var service_id1 = "<?=$service_id; ?>"
 
         if(Location1==''|| Date1==''|| Duration=='' || Quantity=='' || Description==''){
            $("#status<?= $service_id; ?>").html('<div class="btn  btn-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Fill in all fields before submitting the form to avoid this error from occuring.! <span class="glyphicon glyphicon-alert"></span></div>');
@@ -139,11 +151,13 @@
                 location: Location1,
                 date: Date1,
                 duration: Duration,
-                quantity: Quantity,
-                description: Description
+                description: Description,
+                service_id:service_id1,
+                service_price:service_price1
             },
             function(data){
                $("#status<?= $service_id; ?>").html(data);
+               $("#request_service_customer_frm<?= $service_id; ?>")[0].reset();
             })
         }
     })

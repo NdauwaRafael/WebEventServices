@@ -12,7 +12,10 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
 }
 
 
-?>             
+?>  
+
+<script src="tools/js/jquery-2.1.4.min.js"></script>
+<script src="tools/js/bootstrap.min.js"></script>          
               <nav class="navbar navbar-custom navbar-fixed-top">
               <div class="container">
                 <div class="container-fluid">
@@ -31,7 +34,8 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                       <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                      <li><a href="#">Link</a></li>
+                      <li><a id="requests">Requests Details</a></li>
+                      <li><a href="#">Messages</a></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -45,16 +49,10 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
                         </ul>
                       </li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                      <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
+
                     <ul class="nav navbar-nav navbar-right">
-                      <li ><a  href="#">Link</a></li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if(isset($user) && !empty($user)){echo $user; }?><span class="caret"></span></a>
+                        <a  class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if(isset($user) && !empty($user)){echo $user; }?><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href="#">Action</a></li>
                           <li><a href="#">Another action</a></li>
@@ -72,11 +70,15 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
- $(documment).ready(function(){
+ $(document).ready(function(){
             var url = '<?php echo $dir; ?>';
-            if (url =='localhost/WebEventServices/')
+            if (url =='localhost/WebEventServices/'){
             $("#logout").attr('href', 'config/logout.php');
-            }     
+            }  
+
+
  })
+
+ 
 </script>
 

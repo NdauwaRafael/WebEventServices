@@ -65,28 +65,35 @@ if(!vendor()) {
 	                    </a>
 	                </li>
 	                <li>
-	                    <a id="">
+	                    <a id="new_request">
 	                        
-	                        <p>New Requess</p>
+	                        <p>New Request</p>
 	                    </a>
 	                </li>
 
 	                <li>
-	                    <a id="">
+	                    <a id="accepted_request">
 	                        
 	                        <p>Confirmed Requests</p>
 	                    </a>
 	                </li> 
 
  	                <li>
-	                    <a id="">
+	                    <a id="declined_request">
 	                        
 	                        <p>Declined Requests</p>
 	                    </a>
 	                </li> 
 
+ 	                <li>
+	                    <a id="completed_request">
+	                        
+	                        <p>Completed Requests</p>
+	                    </a>
+	                </li>					
+
 	                <li>
-	                    <a id="">
+	                    <a id="reports">
 	                        
 	                        <p>Reports</p>
 	                    </a>
@@ -423,7 +430,93 @@ if(!vendor()) {
        $("#vendor_profile").click(function(){
            $("#vendorspace").load("profile.php");
        })
+
+       $("#reports").click(function(){
+           $("#vendorspace").load("reports.php");
+       })	   
+
+
+/*New Requests*/
+	   $("#new_request").click(function(){
+		   var status1 = 'requested';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }
+         
+	   });
+
+/*Accepted Requests*/
+	   $("#accepted_request").click(function(){
+		   var status1 = 'Accepted';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }
+         
+	   });
+
+
+/*Declined Requests*/
+	   $("#declined_request").click(function(){
+		   var status1 = 'Declined';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }
+         
+	   });
+
+
+/*New Requests*/
+	   $("#completed_request").click(function(){
+		   var status1 = 'Completed';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }
+         
+	   });	   	   
+
    })
 
+
+/*Functions*/
+
+function new_request(){
+		   var status1 = 'requested';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }	
+}
+
+function accepted_request(){
+		   var status1 = 'Accepted';
+		   if(status1==''){
+
+		   }else{
+			   $.post("requests.php",{status:status1}, function(data){
+				   $("#vendorspace").html(data);
+			   })
+		   }
+}
+
+/*reports*/
 </script>
 </html>

@@ -19,10 +19,9 @@ require "config/session.php";
   <body style = "background:url('tools/images/tent-rental-slider.jpg'); background-size:cover; background-attachment: fixed; padding-top:70px;">
 <?php include "template/navigation.php"; ?>
 
-
           <div class="container home-content">
-            
-            <div class="row">
+          
+            <div class="row" id="concept">
 
 
   <?php include "customer/view_services.php"; ?>
@@ -47,6 +46,11 @@ require "config/session.php";
 
 
 <?php include "inc/js.php"; ?>
+<script>
+$("#requests").click(function(){
+  $("#concept").load("customer/requests.php");
+});
+</script>
   </body>
 
 </html>
