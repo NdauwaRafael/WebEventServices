@@ -12,10 +12,9 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
 }
 
 
-?>  
+?>
 
-<script src="tools/js/jquery-2.1.4.min.js"></script>
-<script src="tools/js/bootstrap.min.js"></script>          
+
               <nav class="navbar navbar-custom navbar-fixed-top">
               <div class="container">
                 <div class="container-fluid">
@@ -52,7 +51,7 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
 
                     <ul class="nav navbar-nav navbar-right">
                       <li class="dropdown">
-                        <a  class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if(isset($user) && !empty($user)){echo $user; }?><span class="caret"></span></a>
+                        <a  class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><?php if(isset($user) && !empty($user)){echo $custFname." ".$custLname; }?><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href="#">Action</a></li>
                           <li><a href="#">Another action</a></li>
@@ -74,11 +73,10 @@ for ($i = 0; $i < count($parts) - 1; $i++) {
             var url = '<?php echo $dir; ?>';
             if (url =='localhost/WebEventServices/'){
             $("#logout").attr('href', 'config/logout.php');
-            }  
+            }
 
 
  })
 
- 
-</script>
 
+</script>

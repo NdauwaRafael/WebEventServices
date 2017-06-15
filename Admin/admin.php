@@ -14,7 +14,7 @@ require "config/session.php";
     <title>HOME | Eservices </title>
 
     <?php include "../inc/css.php"; ?>
-
+    <?php include "../inc/js.php"; ?>
   </head>
 
   <body>
@@ -37,7 +37,7 @@ require "config/session.php";
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                       <li class="active"><a href="#">Admin ~ <?=$_SESSION['admin_email'];?> <span class="sr-only">(current)</span></a></li>
-                      <li><a href="#">Home</a></li>
+                      <li><a href="logout.php">Logout</a></li>
 
                     </ul>
 
@@ -79,11 +79,38 @@ require "config/session.php";
    <td><?=$fname;?></td>
    <td><?=$lname;?></td>
    <td><?=$phone;?></td>
-   <td><button class="btn btn-default btn-sm">
+   <td><button class="btn btn-default btn-sm" id="action<?=$cust_id;?>">
      <?php if($cust_permission=='Active'){ ?>Deactivate<?php }else{ ?>Activate<?php } ?>
    </button></td>
-   <td><button class="btn btn-danger btn-sm">Delete</button></td>
+   <td><button id="delete<?=$cust_id;?>" class="btn btn-danger btn-sm">Delete</button></td>
 </tr>
+<script>
+  $("#action<?=$cust_id;?>").click(function(){
+    var permission1 = "<?=$cust_permission; ?>"; 
+    var id1 ="<?=$cust_id;?>";
+
+    if(permission1=='' || id1=='' ){
+
+    }else{
+      $.post("config/permission.php",{permission:permission1, id:id1}, function(data){
+          alert(data);
+          window.location.href="admin.php";
+      })
+    }
+  })
+
+  $("#delete<?=$cust_id;?>").click(function(){
+    var custid1 = "<?=$cust_id;?>";
+    if(custid1==''){
+
+    }else{
+      $.post("config/delete.php",{custid:custid1}, function(data){
+          alert(data);
+          window.location.href="admin.php";        
+      })
+    }
+  })
+</script>
 <?php      
   }
 ?>
@@ -127,11 +154,38 @@ require "config/session.php";
    <td><?=$firstname; ?></td>
    <td><?=$laststname; ?></td>
    <td><?=$vphone ?></td>
-   <td><button class="btn btn-default btn-sm">
+   <td><button class="btn btn-default btn-sm" id="active<?=$idno;?>">
      <?php if($vpermis=='Active'){ ?>Deactivate<?php }else{ ?>Activate<?php } ?>
    </button></td>
-   <td><button class="btn btn-danger btn-sm">Delete</button></td>
+   <td><button id="delete_vendor<?=$idno;?>" class="btn btn-danger btn-sm">Delete</button></td>
 </tr>
+<script>
+  $("#active<?=$idno;?>").click(function(){
+    var idno1 = "<?=$idno;?>";
+    var permission1 = "<?=$vpermis;?>";
+
+    if(permission1=='' || idno1==''){
+
+    }else{
+        $.post("config/vendor_permission.php",{idno:idno1, permission:permission1}, function(data){
+           alert(data);
+          window.location.href="admin.php";         
+        });
+    }
+  })
+
+  $("#delete_vendor<?=$idno;?>").click(function(){
+    var vidno1 = "<?=$idno;?>";
+    if(vidno1==''){
+
+    } else{
+      $.post("config/delete_vendor.php", {vidno:vidno1},function(data){
+           alert(data);
+          window.location.href="admin.php";         
+      })
+    }
+  })
+</script>
 <?php
   }
 ?>
@@ -154,7 +208,7 @@ require "config/session.php";
 
 
 
-<?php include "../inc/js.php"; ?>
+
 
   </body>
 

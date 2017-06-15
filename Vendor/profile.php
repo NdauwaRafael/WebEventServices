@@ -2,6 +2,7 @@
 session_start();
 require "config/database.conf.php";
   require "config/profile_details.conf.php";
+
 ?>
 	                    <div class="col-md-8">
 	                        <div class="card">
@@ -87,7 +88,7 @@ require "config/database.conf.php";
     								<h6 class="category text-gray">SERVICE PROVIDER / EVENT ORGANIZER</h6>
     								<h4 class="card-title"><?= $vendor_firstname  ?> <?= $vendor_lastname  ?></h4>
     								<p class="card-content">
-    									Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+    									<?=$vendor_bio;?>
     								</p>
     								<a href="#pablo" class="btn btn-warning btn-round">LIKE</a>
     							</div>

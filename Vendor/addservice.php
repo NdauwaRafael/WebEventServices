@@ -22,9 +22,16 @@
 													<label >Item Classification</label>
 													<select class="form-control" id="category">
                                                       <option>----[SELECT A CATEGORY]----</option>
-                                                      <option value="Transport">Transport</option>
-                                                      <option value="Entertainment">Entertainment</option>
-                                                      <option value="Catering">Catering</option>
+														<option value="Transport">Transport</option>
+														<option value="Shelter">Shelter</option>
+														<option value="Catering">Catering</option>
+														<option value="Transport">Transport</option>
+														<option value="Entertainment">Entertainment</option>
+														<option value="Fashion">Fashion</option>
+														<option value="Reception">Reception</option>
+														<option value="Security">Security</option>
+														<option value="Photography">Photography</option>
+														<option value="Videography">Videography</option>
                                                     </select>
 												</div>
 	                                        </div>
@@ -49,7 +56,20 @@
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label >County</label>
-													<input type="text" class="form-control" id="county" >
+													<select class="form-control" id="county">
+													<option>----[SELECT A CATEGORY]----</option>
+													<?php
+													 require "config/database.conf.php";
+													  $select_county = "SELECT * FROM `counties`";
+													  $county_result = mysqli_query($connect, $select_county);
+													  while ($county = mysqli_fetch_array($county_result)) {
+														  ?>
+														  <option value="<?=$county['name'];?>"><?=$county['name'];?></option>
+														  <?php
+													  }
+													?>
+
+                                                    </select>
 												</div>
 	                                        </div>
 	                                        <div class="col-md-4">
@@ -91,16 +111,16 @@
         var county1 = $("#county").val();
         var subcounty1 = $("#subcounty").val();
         var description1 = $("#description").val();
-           
+
             if(name1=='' || category1==''  || city1=='' || county1=='' || subcounty1=='' || description1==''){
                  $("#status").attr("data-background-color", "red");
                  $("#status").html('<h4 class="title">Fill in all empty fields before submitting</h4><p class="category">All fields must be filled before you hit add button!!</p>');
             }else{
                 $.post("config/additem.conf.php", {name:name1, category:category1, city:city1, county:county1, subcounty:subcounty1, description:description1}, function(data){
                   $("#status").html(data);
-                  
+
                 })
             }
         })
     })
- </script>                       
+ </script>

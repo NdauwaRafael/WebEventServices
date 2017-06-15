@@ -183,7 +183,7 @@ ob_start();
         $query = "INSERT INTO `customer`(`id`, `firstname`, `lastname`, `email`, `phone`, `residence`, `password`) VALUES (NULL,'$fname','$lname','$email','$phone','$residence','$pass')";
         if(mysqli_query($connect, $query)){
           $_SESSION['customer_email'] = $email;
-          header("location: dashboard.php");
+          header("location: ../home.php");
         }else{
           echo "error";
         }
